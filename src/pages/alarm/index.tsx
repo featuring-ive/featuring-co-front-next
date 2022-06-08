@@ -1,6 +1,6 @@
-import { NextPage } from "next"
-import Head from "next/head"
-import { Containner } from "./style"
+import { NextPage } from 'next'
+import Head from 'next/head'
+import { Containner } from './style'
 
 const Alarm: NextPage = () => {
 	return (

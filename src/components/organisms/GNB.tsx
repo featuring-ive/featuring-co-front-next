@@ -32,13 +32,13 @@ function GNB() {
 							<button>멤버십 관리</button>
 						</Mebership>
 						<Section>
-							<Link href="/my_setting">
+							<Link href="/my-setting">
 								<a>my_setting</a>
 							</Link>
-							<Link href="/my_membership">
+							<Link href="/my-membership">
 								<a>my_membership</a>
 							</Link>
-							<Link href="/my_faq">
+							<Link href="/my-faq">
 								<a>my_faq</a>
 							</Link>
 						</Section>
@@ -61,7 +61,7 @@ function GNB() {
 				<Divide />
 
 				<Section>
-					<Link href="/dash_board">
+					<Link href="/dash-board">
 						<a>dash_board</a>
 					</Link>
 				</Section>
@@ -87,8 +87,12 @@ function GNB() {
 				<BottomSection>
 					<Box />
 					<BottomMenu>
-						<a href="/">서비스 활용 가이드</a>
-						<a href="/">인사이트 블로그</a>
+						<Link href="https://naver.com">
+							<a target="_blank">서비스 활용 가이드</a>
+						</Link>
+						<Link href="https://naver.com">
+							<a target="_blank">인사이트 블로그</a>
+						</Link>
 						<select name="Languages">
 							<option value="KOR">KOR</option>
 							<option value="ENG">ENG</option>
