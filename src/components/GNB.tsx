@@ -6,10 +6,30 @@ const Containner = styled.div `
     display: flex;
     flex-direction: column;
     padding: 24px;
+    padding-bottom: 80px;
     width: 320px;
+    height: fill;
     background-color: #F8F9FA;
     gap: 24px;
     text-decoration: none;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        height: 20%;
+        background-color: #DEE2E6;
+        border-radius: 4px;
+        background-clip: padding-box;
+        border: 2px solid transparent
+    }
+
+    ::-webkit-scrollbar-track {
+        background: none;
+    }
 `
 
 const Section = styled.div `
@@ -30,8 +50,14 @@ const Section = styled.div `
         }
     }
 `
+
+const Logo = styled.div`
+    padding: 0 16px;
+`
+
 const Divide = styled.div`
-    height: 1px;
+    display: block;
+    min-height: 1px;
     width: 240px;
     margin: 0 16px;
     background-color: #DEE2E6;
@@ -66,30 +92,81 @@ const Profile_info = styled.div`
     }
 `
 
+const Mebership = styled.div`
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 0 16px;
+    padding: 24px;
+
+    background-color: #F1F3F5;
+    border-radius: 8px;
+    border: 1px solid #DEE2E6;
+
+    p {
+        font-weight: bold;
+    }
+    span {
+        font-size: 14px;
+    }
+    button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 40px;
+        background-color: #31363A;
+        border-radius: 8px;
+        color: white;
+        font-weight: bold;
+        font-size: 14px;
+
+        &:hover {
+            background-color: black;
+        }
+    }
+`
+
+const BottomSection = styled.div`
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 320px;
+    padding: 0 40px;
+`
+
+const Box = styled.div`
+    display: block;
+    height: 40px;
+    background: linear-gradient(0deg, rgba(248,249,250,1) 0%, rgba(248,249,250,0) 100%);
+`
+
+const BottomMenu = styled.div`
+    border-top: 1px solid #DEE2E6;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px 0;
+    background-color: #f8f9fa;
+`
+
 function GNB() {
     const [myMenuOpen, setMyMenuOpen] = useState(false);
     const toggleMyMenu = () => {
         setMyMenuOpen (myMenuOpen => !myMenuOpen);
-        console.log(myMenuOpen)
     }
 
   return (
     <>
         <Containner>
             <Section>
-                <Link href="/">
-                    <a>Home</a>
-                </Link>
-                <Link href="/login">
-                    <a>Login</a>
-                </Link>
-                <Link href="/sign">
-                    <a>Sign</a>
-                </Link>
+                <Logo>
+                    Logo
+                </Logo>
             </Section>
-
-            <Divide/>
-
             <Profile>
                 <Profile_img>
                     M
@@ -98,22 +175,32 @@ function GNB() {
                     <p>Martin</p>
                     <span>martin@featuring.in</span>
                 </Profile_info>
-                <button onClick={()=>toggleMyMenu}>
-                    접기
+                <button onClick={()=>toggleMyMenu()}>
+                    {myMenuOpen ? "▼" : "▲"}
                 </button>
             </Profile>
-
-            <Section>
-                <Link href="/my_setting">
-                    <a>my_setting</a>
-                </Link>
-                <Link href="/my_membership">
-                    <a>my_membership</a>
-                </Link>
-                <Link href="/my_faq">
-                    <a>my_faq</a>
-                </Link>
-            </Section>
+            {myMenuOpen ? 
+                "" :
+                <>
+                    <Mebership>
+                        <p>스탠다드 멤버십을 이용중</p>
+                        <span>결제 예정일 2022.05.20</span>
+                        <button>멤버십 관리</button>
+                    </Mebership>
+                    <Section>
+                        <Link href="/my_setting">
+                            <a>my_setting</a>
+                        </Link>
+                        <Link href="/my_membership">
+                            <a>my_membership</a>
+                        </Link>
+                        <Link href="/my_faq">
+                            <a>my_faq</a>
+                        </Link>
+                    </Section>
+                </>
+            }
+            
 
             <Divide/>
 
@@ -152,6 +239,17 @@ function GNB() {
                     <a>campaign</a>
                 </Link>
             </Section>
+            <BottomSection>
+                <Box/>
+                <BottomMenu>
+                    <a href="/">서비스 활용 가이드</a>
+                    <a href="/">인사이트 블로그</a>
+                    <select name='Languages'>
+                        <option value="KOR">KOR</option>
+                        <option value="ENG">ENG</option>
+                    </select>
+                </BottomMenu>
+            </BottomSection>
         </Containner>
     </>
   )
